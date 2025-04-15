@@ -1,0 +1,676 @@
+/* 
+  ===== GLOBAL STYLES =====
+  These are like the basic rules for how everything on your website should look.
+  It's like picking the colors for your coloring book before you start drawing!
+*/
+:root {
+  --primary-color: #6c5ce7; /* Deep purple - represents creativity and elegance */
+  --secondary-color: #fd79a8; /* Soft pink - represents energy and fun */
+  --accent-color: #ffeaa7; /* Soft yellow - represents happiness and optimism */
+  --text-color: #dfe6e9; /* Light gray - easy on the eyes */
+  --dark-bg: #2d3436; /* Dark background - elegant and modern */
+  --darker-bg: #1e272e; /* Darker background for contrast */
+  --light-text: #f5f6fa; /* Light text for dark backgrounds */
+  --gradient-primary: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  --gradient-secondary: linear-gradient(135deg, #fd79a8, #e84393);
+  --gradient-accent: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+  --shadow-soft: 0 5px 15px rgba(0,0,0,0.2);
+  --shadow-hover: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+
+/* 
+  ===== BASIC PAGE SETUP =====
+  This makes sure your website takes up the whole screen and can be scrolled up and down.
+  It's like setting up your drawing paper to fill the whole desk!
+*/
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  /* This prevents the page from scrolling sideways */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-color);
+  min-height: 100vh;  /* This makes sure the page is at least as tall as the screen */
+  position: relative;
+  overflow-y: auto;  /* This allows the page to scroll up and down */
+}
+
+/* 
+  ===== WELCOME SCREEN ANIMATION =====
+  This is like a curtain that opens when someone visits your website.
+  It fades away after a few seconds to show the main content!
+*/
+.intro-overlay {
+  position: fixed;  /* This makes it stay in place even if you scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;  /* This makes it fully visible at first */
+  transition: opacity 1s ease-out;  /* This makes it fade away smoothly */
+  z-index: 1000;  /* This puts it on top of everything else */
+  pointer-events: none;  /* This lets you click through it */
+}
+
+.intro-overlay.fade-out {
+  opacity: 0;  /* This makes it invisible */
+}
+
+.intro-content {
+  text-align: center;
+  color: white;
+  animation: fadeInUp 1.5s ease-out;  /* This makes the text float up into view */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);  /* This starts the text a little lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);  /* This moves the text up to its final position */
+  }
+}
+
+/* 
+  ===== NAVIGATION BAR =====
+  This is the bar at the top of the page that helps people find different sections.
+  It's like a map that stays at the top of your website!
+*/
+.navbar {
+  background: var(--darker-bg);
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: var(--shadow-soft);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled {
+  padding: 0.5rem 0;
+  background: rgba(30, 39, 46, 0.95);
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: white !important;
+  letter-spacing: 0.5px;
+}
+
+.navbar .nav-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar .nav-link:hover {
+  color: white !important;
+}
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+  width: 70%;
+}
+
+/* 
+  ===== TIMELINE SLIDER =====
+  This is like a storybook that you can swipe through to see important moments.
+  Each card shows a different year or event!
+*/
+.timeline-slider {
+  padding: 2rem 0;  /* This adds space above and below the slider */
+}
+
+.timeline-card {
+  background: white;
+  border-radius: 15px;  /* This makes the corners rounded, like a soft pillow */
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);  /* This adds a shadow, like the card is floating */
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;  /* This makes the card move smoothly when you hover over it */
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);  /* This makes the card float up a little when you hover over it */
+}
+
+/* 
+  ===== FLIP CARDS =====
+  These are like magic cards that flip over when you hover over them.
+  The front shows a photo, and the back shows fun facts!
+*/
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 400px;
+  perspective: 1000px;  /* This makes the 3D effect look better */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;  /* This makes the flip animation smooth */
+  transform-style: preserve-3d;  /* This keeps the 3D effect during the flip */
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);  /* This makes the card flip over when you hover over it */
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;  /* This hides the back when the card is flipped */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background-color: white;
+}
+
+.flip-card-back {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);  /* This starts the back side flipped over */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* This makes sure the image fills the card nicely */
+}
+
+/* 
+  ===== PHOTO GALLERY =====
+  This is like a wall of pictures that shows all your favorite memories.
+  When you hover over a picture, it gets a little bigger!
+*/
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;  /* This changes the cursor to a hand when you hover over it */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;  /* This makes the zoom effect smooth */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);  /* This makes the image get bigger when you hover over it */
+}
+
+/* 
+  ===== MESSAGE WALL =====
+  This is like a digital bulletin board where everyone can write messages.
+  New messages appear at the top with a nice animation!
+*/
+.message-board {
+  background: var(--darker-bg);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.message-container {
+  max-height: 500px;  /* This limits how tall the message area can get */
+  overflow-y: auto;  /* This adds a scrollbar if there are too many messages */
+  padding: 1rem;
+}
+
+.message-item {
+  background: var(--light-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  animation: slideIn 0.3s ease-out;  /* This makes new messages slide in from the top */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);  /* This starts the message a little lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);  /* This moves the message up to its final position */
+  }
+}
+
+/* 
+  ===== MUSIC PLAYER =====
+  This is like a jukebox where everyone can listen to your class playlist.
+  It has a nice background and controls to play, pause, and change songs!
+*/
+.music-player {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.spotify-embed {
+  min-height: 380px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 
+  ===== RESPONSIVE DESIGN =====
+  This makes sure your website looks good on all devices, like phones and tablets.
+  It's like having different-sized paper for different drawing projects!
+*/
+@media (max-width: 768px) {
+  .flip-card {
+    height: 300px;  /* This makes the cards shorter on small screens */
+  }
+  
+  .timeline-card {
+    height: 250px;  /* This makes the timeline cards shorter on small screens */
+  }
+  
+  .gallery-item img {
+    height: 200px;  /* This makes the gallery images shorter on small screens */
+  }
+}
+
+/* 
+  ===== CUSTOM SCROLLBAR =====
+  This makes the scrollbar look prettier than the default one.
+  It's like decorating the edges of your paper!
+*/
+::-webkit-scrollbar {
+  width: 8px;  /* This makes the scrollbar thinner */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);  /* This is the color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);  /* This is the color of the scrollbar thumb */
+  border-radius: 4px;  /* This makes the thumb rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);  /* This changes the color when you hover over it */
+}
+
+/* Hero section styles */
+.hero-section {
+  background: url('images/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for more elegance */
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.hero-section p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  margin-bottom: 2.5rem;
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .btn-primary {
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Section title styles */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--light-text);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-accent);
+  border-radius: 3px;
+}
+
+/* Timeline section enhancement */
+.timeline .card {
+  border: none;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--darker-bg);
+  color: var(--text-color);
+}
+
+.timeline .card-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.timeline .card-text {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Student card styles */
+.student-card {
+  border: none;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--darker-bg);
+  color: var(--text-color);
+}
+
+.student-card .card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.student-card .card-text {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Music section enhancement */
+.music-section {
+  background-color: var(--dark-bg);
+}
+
+.music-section .card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+/* Message wall enhancement */
+#messages {
+  background: linear-gradient(135deg, rgba(45, 52, 54, 0.8), rgba(30, 39, 46, 0.5));
+}
+
+.message-board a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.message-board a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Testimonials list styling */
+.testimonial-list {
+  background: var(--darker-bg);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.testimonial-item {
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-item:last-child {
+  border-bottom: none;
+}
+
+.testimonial-item::before {
+  content: '"';
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2.5rem;
+  color: rgba(108, 92, 231, 0.2);
+  font-family: 'Playfair Display', serif;
+}
+
+.testimonial-text {
+  margin-left: 1.5rem;
+  font-style: italic;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.testimonial-author {
+  margin-left: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+.testimonial-class {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+}
+
+/* Social media section */
+.social-media-section {
+  background-color: var(--dark-bg);
+}
+
+.social-card {
+  background: var(--darker-bg);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.social-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.social-icon.tiktok {
+  color: #000000;
+}
+
+.social-icon.instagram {
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--light-text);
+}
+
+.social-description {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Spotify embed styling */
+.spotify-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .hero-section h1 {
+    font-size: 3.5rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.5rem;
+  }
+  
+  .hero-section .btn-primary {
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    min-height: 80vh;
+    padding: 4rem 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.3rem;
+  }
+  
+  .hero-section .btn-primary {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-section .btn-primary {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+} 

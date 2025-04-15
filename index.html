@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduation Memories</title>
+  <!-- Bootstrap CDN - This is like a magic box of tools that helps us make pretty websites -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome - This gives us cool little pictures (icons) to use in our website -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&family=Montserrat:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <!-- AOS - This helps us add nice animations when scrolling -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Simple custom styles */
+    :root {
+      --primary-color: #2F3C7E; /* Royal Blue - symbolizes achievement */
+      --secondary-color: #FBE8A6; /* Gold/Champagne - festive & elegant */
+      --accent-color: #FBE8A6; /* Gold/Champagne - festive & elegant */
+      --text-color: #222222; /* Darker text for better readability */
+      --text-color-light: #444444; /* Medium text for better readability */
+      --text-color-dark: #111111; /* Very dark text for headings */
+      --light-text: #FFFFFF; /* White text for dark backgrounds */
+      --dark-bg: #2F3C7E; /* Royal Blue background */
+      --darker-bg: #1E2A5E; /* Darker blue for contrast */
+      --light-bg: #F8F9FA; /* Light Gray background */
+      --white-bg: #FFFFFF; /* White background */
+      --gradient-primary: linear-gradient(135deg, #2F3C7E, #1E2A5E);
+      --gradient-secondary: linear-gradient(135deg, #FBE8A6, #F9D77E);
+      --gradient-accent: linear-gradient(135deg, #FBE8A6, #F9D77E);
+      --shadow-soft: 0 5px 15px rgba(0,0,0,0.1);
+      --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    
+    .navbar {
+      background: var(--white-bg);
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: var(--shadow-soft);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary-color) !important;
+      letter-spacing: 0.5px;
+    }
+    
+    .navbar .nav-link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: var(--text-color-dark) !important;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .navbar .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+    
+    .navbar .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .navbar .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .hero-section {
+      background: var(--gradient-primary);
+      color: var(--light-text);
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.2;
+      z-index: 1;
+    }
+    
+    .hero-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--light-text);
+    }
+    
+    .hero-section .lead {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      color: var(--light-text);
+      font-size: 1.5rem;
+    }
+    
+    .hero-section .btn-primary {
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: var(--accent-color);
+      color: var(--primary-color);
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--text-color-dark);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--gradient-secondary);
+      border-radius: 3px;
+    }
+    
+    .section-title i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    .timeline .card {
+      border: none;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--white-bg);
+      color: var(--text-color);
+    }
+    
+    .timeline .card-title {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      color: var(--text-color-dark);
+    }
+    
+    .timeline .card-text {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .timeline .card-text.small {
+      color: var(--text-color-light);
+      font-weight: 500;
+    }
+    
+    .student-card {
+      border: none;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--white-bg);
+      color: var(--text-color);
+    }
+    
+    .student-card .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: var(--text-color-dark);
+    }
+    
+    .student-card .card-text {
+      font-family: 'Quicksand', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .student-card .card-text.small {
+      color: var(--text-color-light);
+      font-weight: 500;
+    }
+    
+    .message-board {
+      background: var(--white-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      font-family: 'Poppins', sans-serif;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      color: var(--text-color);
+    }
+    
+    .music-section .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--text-color-dark);
+    }
+    
+    .btn-primary {
+      background: var(--primary-color);
+      border: none;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      border-radius: var(--border-radius);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      padding: 0.6rem 1.5rem;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      background: var(--darker-bg);
+    }
+    
+    .btn-outline-light {
+      border: 2px solid var(--light-text);
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      border-radius: var(--border-radius);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      padding: 0.6rem 1.5rem;
+    }
+    
+    .btn-outline-light:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      background: var(--light-text);
+      color: var(--primary-color);
+    }
+    
+    .card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow-soft);
+      background: var(--white-bg);
+      color: var(--text-color);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px) rotate(1deg);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .gallery-item img {
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-soft);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .list-group-item {
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+      background: var(--white-bg);
+      color: var(--text-color);
+    }
+    
+    .list-group-item:last-child {
+      border-bottom: none;
+    }
+    
+    .list-group-item strong {
+      color: var(--text-color-dark);
+    }
+    
+    footer {
+      background: var(--primary-color);
+      color: var(--light-text);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+      letter-spacing: 0.3px;
+      padding: 3rem 0 1.5rem;
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Class cards styling */
+    #profiles .card {
+      border: none;
+      box-shadow: var(--shadow-soft);
+      background: var(--darker-bg);
+      color: var(--text-color);
+    }
+    
+    #profiles .card-img-top {
+      border-bottom: 3px solid var(--accent-color);
+    }
+    
+    #profiles .card-title {
+      color: var(--accent-color);
+    }
+    
+    #profiles .btn-primary {
+      background: var(--primary-color);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Timeline section enhancement */
+    #timeline .card {
+      border: none;
+      box-shadow: var(--shadow-soft);
+      background: var(--darker-bg);
+      color: var(--text-color);
+    }
+    
+    #timeline .card-img-top {
+      border-bottom: 3px solid var(--accent-color);
+    }
+    
+    #timeline .card-title {
+      color: var(--accent-color);
+    }
+    
+    /* Gallery section enhancement */
+    #gallery {
+      background-color: var(--dark-bg);
+      padding: 5rem 0;
+    }
+    
+    #gallery .section-title {
+      color: var(--light-text);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    #gallery .section-title i {
+      color: var(--accent-color);
+    }
+    
+    /* Message wall enhancement */
+    #messages {
+      background: linear-gradient(135deg, rgba(45, 52, 54, 0.8), rgba(30, 39, 46, 0.5));
+    }
+    
+    .message-board a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .message-board a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+    
+    /* Music section enhancement */
+    .music-section {
+      background-color: var(--dark-bg);
+    }
+    
+    .music-section .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+    
+    .list-group-item .btn-outline-primary {
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .list-group-item .btn-outline-primary:hover {
+      background: var(--gradient-primary);
+      border-color: transparent;
+      color: white;
+    }
+    
+    /* Social media section */
+    .social-media-section {
+      background-color: var(--dark-bg);
+      padding: 5rem 0;
+    }
+    
+    .social-media-section .section-title {
+      color: var(--light-text);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .social-media-section .section-title i {
+      color: var(--accent-color);
+    }
+    
+    .social-card {
+      background: var(--white-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      color: var(--text-color);
+    }
+    
+    .social-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .social-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      transition: all 0.3s ease;
+    }
+    
+    .social-card:hover .social-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+    
+    .social-icon.tiktok {
+      color: #000000;
+    }
+    
+    .social-icon.instagram {
+      background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .social-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-color-dark);
+    }
+    
+    .social-description {
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+    
+    /* Spotify embed styling */
+    .spotify-embed {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+      .hero-section h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero-section p {
+        font-size: 1.5rem;
+      }
+      
+      .hero-section .btn-primary {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .card-title {
+        font-size: 1.5rem;
+      }
+      
+      .card-text {
+        font-size: 1rem;
+      }
+      
+      .social-card {
+        padding: 1.5rem;
+      }
+      
+      .social-icon {
+        font-size: 2.5rem;
+      }
+      
+      .social-title {
+        font-size: 1.5rem;
+      }
+      
+      .social-description {
+        font-size: 0.95rem;
+      }
+      
+      .testimonial-text {
+        font-size: 0.9rem;
+      }
+      
+      .testimonial-author {
+        font-size: 0.85rem;
+      }
+      
+      .footer-title {
+        font-size: 1.5rem;
+      }
+      
+      .footer-links a {
+        font-size: 0.9rem;
+      }
+      
+      .copyright {
+        font-size: 0.8rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.4rem;
+      }
+      
+      .navbar .nav-link {
+        font-size: 0.9rem;
+      }
+      
+      .gallery-item img {
+        height: 200px;
+        object-fit: cover;
+      }
+      
+      .timeline .card-img-top {
+        height: 180px;
+        object-fit: cover;
+      }
+      
+      #profiles .card-img-top {
+        height: 250px;
+        object-fit: cover;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero-section {
+        min-height: 80vh;
+        padding: 4rem 0;
+      }
+      
+      .hero-section h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero-section p {
+        font-size: 1.3rem;
+      }
+      
+      .hero-section .btn-primary {
+        font-size: 1.1rem;
+        padding: 0.7rem 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .card-title {
+        font-size: 1.3rem;
+      }
+      
+      .card-text {
+        font-size: 0.95rem;
+      }
+      
+      .social-card {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .social-icon {
+        font-size: 2rem;
+      }
+      
+      .social-title {
+        font-size: 1.3rem;
+      }
+      
+      .social-description {
+        font-size: 0.9rem;
+      }
+      
+      .testimonial-text {
+        font-size: 0.85rem;
+      }
+      
+      .testimonial-author {
+        font-size: 0.8rem;
+      }
+      
+      .footer-title {
+        font-size: 1.3rem;
+      }
+      
+      .footer-links a {
+        font-size: 0.85rem;
+      }
+      
+      .copyright {
+        font-size: 0.75rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+      
+      .navbar .nav-link {
+        font-size: 0.85rem;
+      }
+      
+      .gallery-item img {
+        height: 180px;
+      }
+      
+      .timeline .card-img-top {
+        height: 160px;
+      }
+      
+      #profiles .card-img-top {
+        height: 220px;
+      }
+      
+      .message-board {
+        padding: 1.5rem;
+      }
+      
+      .list-group-item {
+        padding: 0.8rem;
+      }
+      
+      .social-icons a {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
+      }
+    }
+    
+    @media (max-width: 575.98px) {
+      .hero-section h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-section p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-section .btn-primary {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .card-title {
+        font-size: 1.2rem;
+      }
+      
+      .card-text {
+        font-size: 0.9rem;
+        color: var(--text-color-light);
+      }
+      
+      .social-card {
+        padding: 1rem;
+      }
+      
+      .social-icon {
+        font-size: 1.8rem;
+      }
+      
+      .social-title {
+        font-size: 1.2rem;
+      }
+      
+      .social-description {
+        font-size: 0.85rem;
+      }
+      
+      .testimonial-text {
+        font-size: 0.8rem;
+      }
+      
+      .testimonial-author {
+        font-size: 0.75rem;
+      }
+      
+      .footer-title {
+        font-size: 1.2rem;
+      }
+      
+      .footer-links a {
+        font-size: 0.8rem;
+      }
+      
+      .copyright {
+        font-size: 0.7rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.1rem;
+      }
+      
+      .navbar .nav-link {
+        font-size: 0.8rem;
+      }
+      
+      .gallery-item img {
+        height: 160px;
+      }
+      
+      .timeline .card-img-top {
+        height: 140px;
+      }
+      
+      #profiles .card-img-top {
+        height: 200px;
+      }
+      
+      .message-board {
+        padding: 1.2rem;
+      }
+      
+      .list-group-item {
+        padding: 0.7rem;
+      }
+      
+      .social-icons a {
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+      }
+      
+      .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      
+      .row {
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      
+      .py-5 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+      }
+      
+      .mb-5 {
+        margin-bottom: 3rem !important;
+      }
+      
+      .g-4 {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+      }
+    }
+    
+    /* Additional mobile optimizations */
+    @media (max-width: 480px) {
+      .hero-section {
+        min-height: 70vh;
+        padding: 3rem 0;
+      }
+      
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-section p {
+        font-size: 1rem;
+      }
+      
+      .hero-section .btn-primary {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+      }
+      
+      .card-text {
+        font-size: 0.85rem;
+      }
+      
+      .social-card {
+        padding: 0.8rem;
+      }
+      
+      .social-icon {
+        font-size: 1.6rem;
+      }
+      
+      .social-title {
+        font-size: 1.1rem;
+      }
+      
+      .social-description {
+        font-size: 0.8rem;
+      }
+      
+      .testimonial-text {
+        font-size: 0.75rem;
+      }
+      
+      .testimonial-author {
+        font-size: 0.7rem;
+      }
+      
+      .footer-title {
+        font-size: 1.1rem;
+      }
+      
+      .footer-links a {
+        font-size: 0.75rem;
+      }
+      
+      .copyright {
+        font-size: 0.65rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1rem;
+      }
+      
+      .navbar .nav-link {
+        font-size: 0.75rem;
+      }
+      
+      .gallery-item img {
+        height: 140px;
+      }
+      
+      .timeline .card-img-top {
+        height: 120px;
+      }
+      
+      #profiles .card-img-top {
+        height: 180px;
+      }
+      
+      .message-board {
+        padding: 1rem;
+      }
+      
+      .list-group-item {
+        padding: 0.6rem;
+      }
+      
+      .social-icons a {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+      }
+      
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      
+      .row {
+        margin-left: -8px;
+        margin-right: -8px;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      
+      .py-5 {
+        padding-top: 2.5rem !important;
+        padding-bottom: 2.5rem !important;
+      }
+      
+      .mb-5 {
+        margin-bottom: 2.5rem !important;
+      }
+      
+      .g-4 {
+        --bs-gutter-x: 0.8rem;
+        --bs-gutter-y: 0.8rem;
+      }
+    }
+    
+    /* Creator credit styling */
+    .creator-credit {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .creator-credit-large {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+    
+    .creator-link {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .creator-link:hover {
+      color: var(--light-text);
+      text-decoration: none;
+    }
+    
+    .creator-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--light-text);
+      transition: all 0.3s ease;
+    }
+    
+    .creator-link:hover::after {
+      width: 100%;
+    }
+    
+    .creator-link i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar - This is like a map at the top of your website that helps people find different sections -->
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Graduation Memories</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border: 2px solid var(--primary-color); background-color: var(--white-bg);">
+  <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=%270 0 32 32%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath stroke=%27%232F3C7E%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 d=%27M4 8h24M4 16h24M4 24h24%27/%3E%3C/svg%3E');"></span>
+</button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#profiles">Classes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section - This is the first thing people see when they visit your website -->
+  <section class="py-5 text-center text-white hero-section">
+    <!-- Recommended image size: 1920x1080px (16:9 ratio) or 1920x1280px (3:2 ratio) -->
+    <!-- Place your hero image at: images/hero-bg.jpg -->
+    <div class="container">
+      <h1 class="display-4 fw-bold" data-aos="fade-up">Graduation Memories <i class="fas fa-graduation-cap"></i></h1>
+      <p class="lead" data-aos="fade-up" data-aos-delay="200">Four unforgettable years, countless precious memories, and friendships that will last a lifetime 💖</p>
+      <div data-aos="fade-up" data-aos-delay="300">
+        <p class="creator-credit">Created with ❤️ by <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link">Zubair</a></p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="400">
+        <a href="#profiles" class="btn btn-primary btn-lg">View Our Class Students</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section - This is where you can showcase important events -->
+  <section class="py-5" id="timeline">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title" data-aos="fade-up"><i class="fas fa-calendar-alt"></i> Our Journey</h2>
+      <div class="row g-4">
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 shadow-sm">
+            <img src="images/timeline/freshman.jpg" class="card-img-top" alt="Freshman Year">
+            <div class="card-body text-center">
+              <h3 class="card-title"> 9.SINIF </h3>
+              <p class="card-title">Where it all began...</p>
+              <p class="card-title small">First day of high school, new friendships formed</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 shadow-sm">
+            <!-- Recommended image size: 800x600px (4:3 ratio) -->
+            <img src="images/timeline/sophomore.jpg" class="card-img-top" alt="Sophomore Year">
+            <div class="card-body text-center">
+              <h3 class="card-title"> 10.SINIF </h3>
+              <p class="card-title">Growing together...</p>
+              <p class="card-title small">First school events, new experiences</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 shadow-sm">
+            <!-- Recommended image size: 800x600px (4:3 ratio) -->
+            <img src="images/timeline/junior.jpg" class="card-img-top" alt="Junior Year">
+            <div class="card-body text-center">
+              <h3 class="card-title"> 11.SINIF </h3>
+              <p class="card-title">Making memories...</p>
+              <p class="card-title small">School trips, competitions, achievements</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="card h-100 shadow-sm">
+            <!-- Recommended image size: 800x600px (4:3 ratio) -->
+            <img src="images/timeline/senior.jpg" class="card-img-top" alt="Senior Year">
+            <div class="card-body text-center">
+              <h3 class="card-title"> 12.SINIF </h3>
+              <p class="card-title">Our final chapter...</p>
+              <p class="card-title small">Graduation preparation, lasting memories</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Profiles Section - This is where you can showcase your class students -->
+  <section class="py-5" id="profiles">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title" data-aos="fade-up"><i class="fas fa-users"></i> Our Classes</h2>
+      <div class="row justify-content-center g-4">
+        <!-- Class 12B Card -->
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 shadow-sm">
+            <!-- Recommended image size: 800x600px (4:3 ratio) -->
+            <img src="images/classes/12b-preview.jpg" class="card-img-top" alt="Class 12B Preview" style="height: 300px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h3 class="card-title section-title">Class 12B</h3>
+              <p class="card-title">16 Amazing Students</p>
+              <p class="card-title small">Click below to meet our wonderful students</p>
+              <a href="class12b.html" class="btn btn-primary">View Class 12B</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Class 12C Card -->
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 shadow-sm">
+            <img src="images/classes/12c-preview.jpg" class="card-img-top" alt="Class 12C Preview" style="height: 300px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h3 class="card-title section-title">Class 12C</h3>
+              <p class="card-title">28 Amazing Students</p>
+              <p class="card-title small">Click below to meet our wonderful students</p>
+              <a href="class12c.html" class="btn btn-primary">View Class 12C</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section - This is where you can showcase your photos -->
+  <section class="py-5" id="gallery">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title fw-bold" data-aos="fade-up"><i class="fas fa-images me-2"></i>Our Gallery</h2>
+      <div class="row g-4">
+        <!-- Gallery Item 1 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="gallery-item">
+            <img src="images/gallery1.jpg" alt="Graduation Photo 1" class="img-fluid">
+          </div>
+        </div>
+        <!-- Gallery Item 2 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="gallery-item">
+            <img src="images/gallery2.jpg" alt="Graduation Photo 2" class="img-fluid">
+          </div>
+        </div>
+        <!-- Gallery Item 3 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="gallery-item">
+            <img src="images/gallery3.jpg" alt="Graduation Photo 3" class="img-fluid">
+          </div>
+        </div>
+        <!-- Gallery Item 4 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="gallery-item">
+            <img src="images/gallery4.jpg" alt="Graduation Photo 4" class="img-fluid">
+          </div>
+        </div>
+        <!-- Gallery Item 5 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="gallery-item">
+            <img src="images/gallery5.jpg" alt="Graduation Photo 5" class="img-fluid">
+          </div>
+        </div>
+        <!-- Gallery Item 6 -->
+        <!-- Recommended image size: 800x600px (4:3 ratio) -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="gallery-item">
+            <img src="images/gallery6.jpg" alt="Graduation Photo 6" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section id="social" class="py-5 social-media-section">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title" data-aos="fade-up"><i class="fas fa-share-alt me-2"></i>Follow Us</h2>
+      <div class="row justify-content-center g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="social-card">
+            <i class="fab fa-tiktok social-icon tiktok"></i>
+            <h3 class="social-title">TikTok</h3>
+            <p class="social-description">Follow us on TikTok for fun videos and behind-the-scenes moments!</p>
+            <a href="https://www.tiktok.com/@yourclass" target="_blank" class="btn btn-primary">Follow on TikTok</a>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="social-card">
+            <i class="fab fa-instagram social-icon instagram"></i>
+            <h3 class="social-title">Instagram</h3>
+            <p class="social-description">Check out our Instagram for photos and updates!</p>
+            <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="btn btn-primary">Follow on Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - This is the bottom section of your website -->
+  <footer class="py-4 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <h5>Graduation Memories <i class="fas fa-graduation-cap"></i></h5>
+          <p>Class of 2024</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="developer-message">
+            <div class="creator-credit-large">
+              <p class="mb-0">Created with ❤️ by <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link">Zubair</a></p>
+              <p class="mb-0">Follow me on <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link"><i class="fab fa-instagram"></i> Instagram</a></p>
+            </div>
+            <p class="mb-0">"Live, Laugh, Learn"</p>
+            <p class="mb-0">© 2025 Graduation Memories. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts - These are like magic spells that make everything interactive and fun -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      
+      if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', function() {
+          navbarCollapse.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          const isClickInside = navbarCollapse.contains(event.target) || navbarToggler.contains(event.target);
+          
+          if (!isClickInside && navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+          }
+        });
+      }
+      
+      // Add hover effect to cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px) rotate(1deg)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) rotate(0deg)';
+        });
+      });
+      
+      // Add hover effect to social icons
+      const socialIcons = document.querySelectorAll('.social-icon');
+      socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.2) rotate(5deg)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1) rotate(0deg)';
+        });
+      });
+      
+      // Add hover effect to buttons
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-3px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // Add hover effect to gallery images
+      const galleryImages = document.querySelectorAll('.gallery-item img');
+      galleryImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.05)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
