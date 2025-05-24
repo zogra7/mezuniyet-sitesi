@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mezuniyet 2025 - My Graduation Site</title>
+  <title>Mezuniyet 2025 - Our Graduation Site</title>
   <!-- Bootstrap CDN - This is like a magic box of tools that helps us make pretty websites -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome - This gives us cool little pictures (icons) to use in our website -->
@@ -13,6 +13,54 @@
   <!-- AOS - This helps us add nice animations when scrolling -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    /* Scoped to .custom-carousel-card only */
+.custom-carousel-card {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+  background-color: var(--white-bg);
+  overflow: hidden;
+}
+
+.custom-carousel-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.custom-carousel-card .carousel-inner img {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  object-fit: cover;
+  height: 200px;
+}
+
+.custom-carousel-card .card-body {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  padding: 1rem;
+}
+
+.custom-carousel-card .card-text {
+  color: var(--text-color-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.custom-carousel-card .carousel-control-prev-icon,
+.custom-carousel-card .carousel-control-next-icon {
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  background-size: 60% 60%;
+  padding: 0.5rem;
+}
+
+.custom-carousel-card .carousel-control-prev,
+.custom-carousel-card .carousel-control-next {
+  width: 15%;
+}
+
+  </style>
+  <style>
+
     /* Simple custom styles */
     :root {
       --primary-color: #2F3C7E; /* Royal Blue - symbolizes achievement */
@@ -1106,7 +1154,7 @@
     <!-- Place your hero image at: images/hero-bg.jpg -->
     <div class="container">
       <h1 class="display-4 fw-bold" data-aos="fade-up">Graduation Memories <i class="fas fa-graduation-cap"></i></h1>
-      <p class="lead" data-aos="fade-up" data-aos-delay="200">Empat tahun penuh drama, tawa, begadang, dan vibes yang nggak akan expired. Temen seperjuangan? Udah kayak keluarga 💖</p>
+      <p class="lead" data-aos="fade-up" data-aos-delay="200">Four years full of drama, chaos, shouting, and vibes that will never expire. School friends? Already like family 💖</p>
     </p>
       <div data-aos="fade-up" data-aos-delay="300">
         <p class="creator-credit">Created with ❤️ by <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link">Zubair</a></p>
@@ -1116,59 +1164,148 @@
       </div>
     </div>
   </section>
+  <!-- Timeline Section - This is where you can share important events -->
 
-  <!-- Timeline Section - This is where you can showcase important events -->
-  <section class="py-5" id="timeline">
-    <div class="container">
-      <h2 class="text-center mb-5 section-title" data-aos="fade-up"><i class="fas fa-calendar-alt"></i> Our Journey</h2>
+  <section class="py-5" id="timeline" style="background: var(--gradient-primary);">
+    <div class="container py-4">
+      <h2 class="text-center mb-5 section-title text-white" data-aos="fade-up">
+        <i class="fas fa-clock me-2"></i>Our Timeline
+      </h2>
       <div class="row g-4">
-        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-          <div class="card h-100 shadow-sm">
-            <img src="images/timeline/freshman.jpg" class="card-img-top" alt="Freshman Year">
-            <div class="card-body text-center">
-              <h3 class="card-title"> 9.SINIF </h3>
-              <p class="card-title">Where it all began...</p>
-              <p class="card-title small">First day of high school, new friendships formed</p>
+        <!-- Card 1 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card custom-carousel-card h-100 shadow" style="background: var(--darker-bg); color: var(--accent-color); border: none;">
+            <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/timeline/kelas9-gorsel.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/timeline/kelas9.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card-body" style="background: var(--white-bg); color: var(--primary-color);">
+              <h5 class="card-title" style="color: var(--primary-color); font-weight: 700;">9.Grade</h5>
+              <p class="card-text" style="color: var(--primary-color);">Where it all began...</p>
+            </div>
+            <!-- Extra space and description -->
+            <div style="height: 32px;"></div>
+            <div class="px-3 pb-3">
+              <p class="small mb-0" style="color: var(--accent-color);"></p>
+                "First year of high school,New language. New culture. We struggled to speak, to connect, even to understand. But thats how our unforgettable journey began."
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-          <div class="card h-100 shadow-sm">
-            <!-- Recommended image size: 800x600px (4:3 ratio) -->
-            <img src="images/timeline/sophomore.JPG" class="card-img-top" alt="Sophomore Year">
-            <div class="card-body text-center">
-              <h3 class="card-title"> 10.SINIF </h3>
-              <p class="card-title">Growing together...</p>
-              <p class="card-title small">First school events, new experiences</p>
+
+        <!-- Card 2 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card custom-carousel-card h-100 shadow" style="background: var(--darker-bg); color: var(--accent-color); border: none;">
+            <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/timeline/kelas10rame.jpeg" class="d-block w-100" alt="..." style="border-stop-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/timeline/kelas10lebaran.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card-body" style="background: var(--white-bg); color: var(--primary-color);">
+              <h5 class="card-title" style="color: var(--primary-color); font-weight: 700;">10.Grade</h5>
+              <p class="card-text" style="color: var(--primary-color);;">Growing together...</p>
+            </div>
+            <!-- Extra space and description -->
+            <div style="height: 32px;"></div>
+            <div class="px-3 pb-3">
+              <p class="small mb-0" style="color: var(--accent-color);"></p>
+                "We grew closer, adapted to a new life, some friends couldnt continue the journey sand faced our first real challenges"
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-          <div class="card h-100 shadow-sm">
-            <!-- Recommended image size: 800x600px (4:3 ratio) -->
-            <img src="images/timeline/junior.JPG" class="card-img-top" alt="Junior Year">
-            <div class="card-body text-center">
-              <h3 class="card-title"> 11.SINIF </h3>
-              <p class="card-title">Making memories...</p>
-              <p class="card-title small">School trips, competitions, achievements</p>
+
+        <!-- Card 3 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card custom-carousel-card h-100 shadow" style="background: var(--darker-bg); color: var(--accent-color); border: none;">
+            <div id="carousel3" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/timeline/kelas11tribun.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/timeline/kelas11bursa.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card-body" style="background: var(--white-bg); color: var(--primary-color);">
+              <h5 class="card-title" style="color: var(--primary-color); font-weight: 700;">11.Grade</h5>
+              <p class="card-text" style="color: var(--primary-color);">Making memories...</p>
+            </div>
+            <!-- Extra space and description -->
+            <div style="height: 32px;"></div>
+            <div class="px-3 pb-3">
+              <p class="small mb-0" style="color: var(--accent-color);">
+                The year of unforgettable trips, solidarity shaped in unbreakable way, and chaos that echoed through the halls. 
+              </p>
             </div>
           </div>
-        </div>
-        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
-          <div class="card h-100 shadow-sm">
-            <!-- Recommended image size: 800x600px (4:3 ratio) -->
-            <img src="images/timeline/senior.jpeg" class="card-img-top" alt="Senior Year">
-            <div class="card-body text-center">
-              <h3 class="card-title"> 12.SINIF </h3>
-              <p class="card-title">Our final chapter...</p>
-              <p class="card-title small">Graduation preparation, lasting memories</p>
+        </div> 
+        <!-- Card 4 -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card custom-carousel-card h-100 shadow" style="background: var(--darker-bg); color: var(--accent-color); border: none;">
+            <div id="carousel4" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/timeline/kelas12.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/timeline/12slide2.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel4" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel4" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="card-body" style="background: var(--white-bg); color: var(--primary-color);">
+              <h5 class="card-title" style="color: var(--primary-color); font-weight: 700;">12.Grade</h5>
+              <p class="card-text" style="color: var(--primary-color);">Our final chapter..</p>
+            </div>
+            <!-- Extra space and description -->
+            <div style="height: 32px;"></div>
+            <div class="px-3 pb-3">
+              <p class="small mb-0" style="color: var(--accent-color);"></p>
+                The last ride! Preparing for graduation, cherishing every moment, and looking forward to the future.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  <!-- Class Profiles Section - This is where you can showcase your class studno need to stressents -->
   <!-- Class Profiles Section - Thiss is where you can showcase your class students -->
   <section class="py-5" id="profiles">
     <div class="container">
@@ -1213,42 +1350,42 @@
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up">
           <div class="gallery-item">
-            <img src="images/gallery1.jpg" alt="Graduation Photo 1" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 1" class="img-fluid">
           </div>
         </div>
         <!-- Gallery Item 2 -->
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
           <div class="gallery-item">
-            <img src="images/gallery2.jpg" alt="Graduation Photo 2" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 2" class="img-fluid">
           </div>
         </div>
         <!-- Gallery Item 3 -->
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
           <div class="gallery-item">
-            <img src="images/gallery3.jpg" alt="Graduation Photo 3" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 3" class="img-fluid">
           </div>
         </div>
         <!-- Gallery Item 4 -->
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
           <div class="gallery-item">
-            <img src="images/gallery4.jpg" alt="Graduation Photo 4" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 4" class="img-fluid">
           </div>
         </div>
         <!-- Gallery Item 5 -->
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
           <div class="gallery-item">
-            <img src="images/gallery5.jpg" alt="Graduation Photo 5" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 5" class="img-fluid">
           </div>
         </div>
         <!-- Gallery Item 6 -->
         <!-- Recommended image size: 800x600px (4:3 ratio) -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
           <div class="gallery-item">
-            <img src="images/gallery6.jpg" alt="Graduation Photo 6" class="img-fluid">
+            <img src="images/hero-bg.jpg" alt="Graduation Photo 6" class="img-fluid">
           </div>
         </div>
       </div>
@@ -1293,14 +1430,18 @@
             <div class="creator-credit-large">
               <p class="mb-0">Created with ❤️ by <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link">Zubair</a></p>
               <p class="mb-0">Follow me on <a href="https://www.instagram.com/zubeyrtau" target="_blank" class="creator-link"><i class="fab fa-instagram"></i> Instagram</a></p>
-            </div>
-            <p class="mb-0">"Lulus sih lulus, tapi ketawa dulu baru mikirin masa depan. Santai, kita anaknya multitask."</p>
-<p class="mb-0">© 2025 Graduation Memories. Semua hak dan vibes ditahan sementara.</p>
+            <p class="mb-0">"We may have graduated, but let's laugh first before worrying about the future. Relax, we're multitaskers."</p>
+            <p class="mb-0">© 2025 Graduation Memories. All rights and vibes reserved for now.</p>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+
+
+
+
 
   <!-- Scripts - These are like magic spells that make everything interactive and fun -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
