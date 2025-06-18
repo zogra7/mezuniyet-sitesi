@@ -53,27 +53,26 @@
   padding: 0.5rem;
 }
 
-.custom-carousel-card .carousel-control-prev,
-.custom-carousel-card .carousel-control-next {
-  width: 15%;
-}
+    .custom-carousel-card .carousel-control-prev,
+    .custom-carousel-card .carousel-control-next {
+      width: 15%;
+    }
 
   </style>
   <style>
-
-    /* Simple custom styles */
+    /* Enhanced custom styles */
     :root {
-      --primary-color: #2F3C7E; /* Royal Blue - symbolizes achievement */
-      --secondary-color: #FBE8A6; /* Gold/Champagne - festive & elegant */
-      --accent-color: #FBE8A6; /* Gold/Champagne - festive & elegant */
-      --text-color: #222222; /* Darker text for better readability */
-      --text-color-light: #444444; /* Medium text for better readability */
-      --text-color-dark: #111111; /* Very dark text for headings */
-      --light-text: #FFFFFF; /* White text for dark backgrounds */
-      --dark-bg: #2F3C7E; /* Royal Blue background */
-      --darker-bg: #1E2A5E; /* Darker blue for contrast */
-      --light-bg: #F8F9FA; /* Light Gray background */
-      --white-bg: #FFFFFF; /* White background */
+      --primary-color: #2F3C7E;
+      --secondary-color: #FBE8A6;
+      --accent-color: #FBE8A6;
+      --text-color: #222222;
+      --text-color-light: #444444;
+      --text-color-dark: #111111;
+      --light-text: #FFFFFF;
+      --dark-bg: #2F3C7E;
+      --darker-bg: #1E2A5E;
+      --light-bg: #F8F9FA;
+      --white-bg: #FFFFFF;
       --gradient-primary: linear-gradient(135deg, #2F3C7E, #1E2A5E);
       --gradient-secondary: linear-gradient(135deg, #FBE8A6, #F9D77E);
       --gradient-accent: linear-gradient(135deg, #FBE8A6, #F9D77E);
@@ -81,11 +80,13 @@
       --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
       --border-radius: 12px;
       --transition: all 0.3s ease;
+      --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      --hover-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      --gradient-hover: linear-gradient(135deg, #2F3C7E, #1E2A5E);
+      --gradient-accent-hover: linear-gradient(135deg, #FBE8A6, #F9D77E);
     }
-    
-    html {
-      scroll-behavior: smooth;
-    }
+
+    /* Enhanced typography */
     
     body {
       font-family: 'Poppins', sans-serif;
@@ -1211,7 +1212,7 @@
             <div id="carousel2" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="images/timeline/kelas10rame.jpeg" class="d-block w-100" alt="..." style="border-stop-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
+                  <img src="images/timeline/kelas10rame.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
                 </div>
                 <div class="carousel-item">
                   <img src="images/timeline/kelas10lebaran.jpeg" class="d-block w-100" alt="..." style="border-top-left-radius: var(--border-radius); border-top-right-radius: var(--border-radius); object-fit: cover; height: 200px;">
@@ -1339,7 +1340,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- Gallery Section - This is where you can showcase your photos -->
   <section class="py-5" id="gallery">
